@@ -1,1 +1,106 @@
 index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZLift Studio | Custom 3D Printing</title>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: #f3c553;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      background-color: #1a1a1a;
+      border-bottom: 2px solid #f3c553;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #cccccc;
+    }
+    .section {
+      padding: 3rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .section h2 {
+      border-left: 6px solid #f3c553;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+    .section ul {
+      list-style-type: square;
+      padding-left: 1.5rem;
+    }
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #f3c553;
+      color: #0e0e0e;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 1rem;
+      border-radius: 4px;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #999999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ZLift Studio</h1>
+    <p>Bring Your Ideas to Life in 3D – Custom Printing & Design</p>
+  </header>
+
+  <div class="section">
+    <h2>How It Works</h2>
+    <ul>
+      <li>1. Upload your 3D file (.STL, .OBJ) or request design help</li>
+      <li>2. We print your object in high-quality filament or resin</li>
+      <li>3. Choose local pickup or shipping – fast turnaround guaranteed</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Pricing Snapshot</h2>
+    <ul>
+      <li>FDM: from $0.25/gram + $8/hr machine time</li>
+      <li>Resin: from $0.50/gram + $10/hr</li>
+      <li>Design/Modeling Help: $40/hr</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Get a Quote</h2>
+    <p>Ready to get started? Upload your file below and we'll send you a quote within 24 hours.</p>
+    <a href="https://forms.gle" target="_blank" class="button">Upload Your File</a>
+  </div>
+
+  <div class="section">
+    <h2>Example Projects</h2>
+    <ul>
+      <li>Custom mounts, cosplay armor, D&D minis, brackets & more</li>
+      <li>Need help modeling something? We’ve got you covered</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 ZLift Studio. All rights reserved.<br>
+    Boston-based | Contact: print@zliftstudio.com
+  </footer>
+</body>
+</html>

@@ -6,26 +6,32 @@
   <title>ZLift Studio | Custom 3D Printing</title>
   <style>
     body {
-      background-color: #0e0e0e;
-      color: #f3c553;
+      background-color: #f4ecdd;
+      color: #1c514b;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
       padding: 0;
     }
     header {
-      padding: 2rem;
+      padding: 2rem 1rem;
       text-align: center;
-      background-color: #1a1a1a;
-      border-bottom: 2px solid #f3c553;
+      background-color: #fff8e8;
+      border-bottom: 3px double #1c514b;
+    }
+    header img {
+      max-width: 120px;
+      margin-bottom: 1rem;
     }
     header h1 {
       font-size: 3rem;
       margin: 0;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
     header p {
       font-size: 1.2rem;
       margin-top: 0.5rem;
-      color: #cccccc;
+      color: #3a3a3a;
     }
     .section {
       padding: 3rem 2rem;
@@ -33,7 +39,7 @@
       margin: 0 auto;
     }
     .section h2 {
-      border-left: 6px solid #f3c553;
+      border-left: 6px solid #1c514b;
       padding-left: 1rem;
       margin-bottom: 1rem;
     }
@@ -41,11 +47,23 @@
       list-style-type: square;
       padding-left: 1.5rem;
     }
+    .gallery {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      max-width: 280px;
+      border: 2px solid #1c514b;
+      background: #fff;
+    }
     .button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
-      background-color: #f3c553;
-      color: #0e0e0e;
+      background-color: #1c514b;
+      color: #f4ecdd;
       font-weight: bold;
       text-decoration: none;
       margin-top: 1rem;
@@ -55,12 +73,14 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: #999999;
+      color: #5c5c5c;
+      background-color: #fff8e8;
     }
   </style>
 </head>
 <body>
   <header>
+    <img src="logo.png" alt="ZLift Studio Logo" />
     <h1>ZLift Studio</h1>
     <p>Bring Your Ideas to Life in 3D – Custom Printing & Design</p>
   </header>
@@ -95,6 +115,11 @@
       <li>Custom mounts, cosplay armor, D&D minis, brackets & more</li>
       <li>Need help modeling something? We’ve got you covered</li>
     </ul>
+    <div class="gallery">
+      <img src="example1.jpg" alt="Custom print example 1" />
+      <img src="example2.jpg" alt="Custom print example 2" />
+      <img src="example3.jpg" alt="Custom print example 3" />
+    </div>
   </div>
 
   <footer>

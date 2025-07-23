@@ -6,37 +6,51 @@
   <title>ZLift Studio | 3D Printing & Design Services</title>
   <style>
     :root {
-      --primary: #1c514b;
-      --bg: #f4ecdd;
-      --header-bg: #f3e8cc;
-      --accent: #fff8e8;
-      --text: #1c514b;
+      --bg-color: #f4ecdd;
+      --text-color: #1c514b;
+      --accent-color: #f3e8cc;
+      --button-color: #1c514b;
+      --button-text: #f4ecdd;
+      --footer-bg: #fff8e8;
     }
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+    [data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #d7ffef;
+      --accent-color: #2c2c2c;
+      --button-color: #4ae3c4;
+      --button-text: #1a1a1a;
+      --footer-bg: #333;
     }
 
     body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Courier New', Courier, monospace;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     header {
-      background-color: var(--header-bg);
       padding: 2rem 1rem;
       text-align: center;
-      border-bottom: 3px double var(--primary);
+      background-color: var(--accent-color);
+      border-bottom: 3px double var(--text-color);
     }
 
     header img {
       width: 100%;
-      max-width: 480px;
+      max-width: 512px;
       height: auto;
       margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
     header p {
@@ -45,22 +59,36 @@
       color: #3a3a3a;
     }
 
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 2px solid var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      color: var(--text-color);
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
     .section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
       padding: 3rem 2rem;
       max-width: 960px;
       margin: 0 auto;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
     }
 
-    .section.show {
+    .section.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
     .section h2 {
-      border-left: 6px solid var(--primary);
+      border-left: 6px solid var(--text-color);
       padding-left: 1rem;
       margin-bottom: 1rem;
     }
@@ -80,30 +108,30 @@
 
     .gallery img {
       max-width: 280px;
-      border: 2px solid var(--primary);
+      border: 2px solid var(--text-color);
       background: #fff;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
 
     .button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
-      background-color: var(--primary);
-      color: var(--bg);
+      background-color: var(--button-color);
+      color: var(--button-text);
       font-weight: bold;
       text-decoration: none;
       margin-top: 1rem;
       border-radius: 4px;
-      transition: background 0.3s ease;
+      transition: background-color 0.3s ease;
     }
 
     .button:hover {
-      background-color: #163f3a;
+      background-color: #17423d;
     }
 
     footer {
@@ -111,46 +139,17 @@
       padding: 2rem;
       font-size: 0.9rem;
       color: #5c5c5c;
-      background-color: var(--accent);
-    }
-
-    /* Scroll-to-top button */
-    #scrollTopBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.75rem 1rem;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: none;
-      z-index: 999;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    }
-
-    #scrollTopBtn:hover {
-      background-color: #163f3a;
-    }
-
-    /* Responsive improvements */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .gallery img {
-        max-width: 100%;
-      }
+      background-color: var(--footer-bg);
     }
   </style>
 </head>
 <body>
 
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
   <header>
     <img src="banner.png" alt="ZLift Studio Logo" />
+    <h1>ZLift Studio</h1>
     <p>Bring Your Ideas to Life in 3D</p>
   </header>
 
@@ -202,39 +201,40 @@
     Boston-based | Contact: print@zliftstudio.com
   </footer>
 
-  <!-- Scroll to top button -->
-  <button id="scrollTopBtn" title="Back to top">↑</button>
-
   <script>
-    // Scroll reveal
+    // Fade-in sections on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+          entry.target.classList.add('visible');
         }
       });
-    }, {
-      threshold: 0.2
-    });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.section').forEach(section => {
       observer.observe(section);
     });
 
-    // Scroll to top
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-    window.onscroll = () => {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        scrollTopBtn.style.display = "block";
+    // Light/dark mode toggle
+    function toggleTheme() {
+      const currentTheme = document.body.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        document.body.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
       } else {
-        scrollTopBtn.style.display = "none";
+        document.body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // On load, apply saved theme
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
       }
     };
-
-    scrollTopBtn.onclick = () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
   </script>
+
 </body>
 </html>

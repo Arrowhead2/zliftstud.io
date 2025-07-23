@@ -5,49 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZLift Studio | 3D Printing & Design Services</title>
   <style>
-    body {
-      background-color: #f4ecdd;
-      color: #1c514b;
-      font-family: 'Courier New', Courier, monospace;
-      margin: 0;
-      padding: 0;
+    :root {
+      --primary: #1c514b;
+      --bg: #f4ecdd;
+      --header-bg: #f3e8cc;
+      --accent: #fff8e8;
+      --text: #1c514b;
     }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
     header {
+      background-color: var(--header-bg);
       padding: 2rem 1rem;
       text-align: center;
-      background-color: #f3e8cc;
-      border-bottom: 3px double #1c514b;
+      border-bottom: 3px double var(--primary);
+    }
+
     header img {
       width: 100%;
-      max-width: 512px;
+      max-width: 480px;
       height: auto;
       margin-bottom: 1rem;
     }
-    header h1 {
-      font-size: 3rem;
-      margin: 0;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+
     header p {
       font-size: 1.2rem;
       margin-top: 0.5rem;
       color: #3a3a3a;
     }
+
     .section {
       padding: 3rem 2rem;
       max-width: 960px;
       margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
     }
+
+    .section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .section h2 {
-      border-left: 6px solid #1c514b;
+      border-left: 6px solid var(--primary);
       padding-left: 1rem;
       margin-bottom: 1rem;
     }
+
     .section ul {
       list-style-type: square;
       padding-left: 1.5rem;
     }
+
     .gallery {
       display: flex;
       gap: 1rem;
@@ -55,31 +77,78 @@
       justify-content: center;
       margin-top: 2rem;
     }
+
     .gallery img {
       max-width: 280px;
-      border: 2px solid #1c514b;
+      border: 2px solid var(--primary);
       background: #fff;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
     }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
     .button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
-      background-color: #1c514b;
-      color: #f4ecdd;
+      background-color: var(--primary);
+      color: var(--bg);
       font-weight: bold;
       text-decoration: none;
       margin-top: 1rem;
       border-radius: 4px;
+      transition: background 0.3s ease;
     }
+
+    .button:hover {
+      background-color: #163f3a;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
       color: #5c5c5c;
-      background-color: #fff8e8;
+      background-color: var(--accent);
+    }
+
+    /* Scroll-to-top button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    #scrollTopBtn:hover {
+      background-color: #163f3a;
+    }
+
+    /* Responsive improvements */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .gallery img {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
     <img src="banner.png" alt="ZLift Studio Logo" />
     <p>Bring Your Ideas to Life in 3D</p>
@@ -87,8 +156,8 @@
 
   <div class="section">
     <h2>What We Do</h2>
-      <p>ZLift Studio offers high-quality 3D printing & mechanical design services with fast turnaround at a competitive price.
-      Whether you're a small business looking for rapid prototyping, or just looking for a unique gift for a friend, we can meet your needs.</p>
+    <p>ZLift Studio offers high-quality 3D printing & mechanical design services with fast turnaround at a competitive price.
+    Whether you're a small business looking for rapid prototyping, or just looking for a unique gift for a friend, we can meet your needs.</p>
   </div>
   
   <div class="section">
@@ -132,5 +201,40 @@
     &copy; 2025 ZLift Studio. All rights reserved.<br>
     Boston-based | Contact: print@zliftstudio.com
   </footer>
+
+  <!-- Scroll to top button -->
+  <button id="scrollTopBtn" title="Back to top">↑</button>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Scroll to top
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    window.onscroll = () => {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    };
+
+    scrollTopBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
 </body>
 </html>
